@@ -68,11 +68,11 @@ nnoremap <leader><space> :nohlsearch<CR>
 " i.e. yank until EOL
 nmap Y y$
 
-" `-[hjkl] to navigate between splits
-nnoremap <leader>h <C-W><C-h>
-nnoremap <leader>j <C-W><C-j>
-nnoremap <leader>k <C-W><C-k>
-nnoremap <leader>l <C-W><C-l>
+" Ctrl-[hjkl] to navigate between splits
+nnoremap <C-h> <C-W><C-h>
+nnoremap <C-j> <C-W><C-j>
+nnoremap <C-k> <C-W><C-k>
+nnoremap <C-l> <C-W><C-l>
 
 " Switch between light and dark theme
 nnoremap <leader>csd :set bg=dark<CR>
