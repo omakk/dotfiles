@@ -75,8 +75,8 @@ nnoremap <C-k> <C-W><C-k>
 nnoremap <C-l> <C-W><C-l>
 
 " Switch between light and dark theme
-nnoremap <leader>csd :set bg=dark<CR>
-nnoremap <leader>csl :set bg=light<CR>
+nnoremap <leader>bgd :set bg=dark<CR>
+nnoremap <leader>bgl :set bg=light<CR>
 
 " Buffer prev/next
 nnoremap <C-x> :bnext<CR>
