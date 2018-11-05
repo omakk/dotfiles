@@ -79,8 +79,8 @@ nnoremap <leader>bgd :set bg=dark<CR>
 nnoremap <leader>bgl :set bg=light<CR>
 
 " Buffer prev/next
-nnoremap <C-x> :bnext<CR>
-nnoremap <C-z> :bprev<CR>
+nnoremap <C-x> :bprev<CR>
+nnoremap <C-z> :bnext<CR>
 
 " Place current line at the center, top, and bottom of screen respectively
 nnoremap <space> zz
