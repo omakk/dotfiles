@@ -3,6 +3,13 @@ Plug 'scrooloose/nerdtree'
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/dev/git/other/fzf' }
 
+" Deoplete
+" An extensible and asynchronous completion framework for neovim/Vim8
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Deoplete-clangx
+" C/C++ completion for deoplete using clang
+Plug 'Shougo/deoplete-clangx'
+
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Color themes
@@ -102,15 +109,35 @@ set clipboard+=unnamedplus
 " Required for operations modifying multiple buffers
 set hidden
 
-" <---- NERDTree
+" ===================================================================
+"                                                                   #
+"                       Plugin Configuration                        #
+"                                                                   #
+" ===================================================================
+
+" ========================= NERDTree ================================
 " Open NERDTree automatically when specifying a directory at launch
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
-" ----> NERDTree
+" ===================================================================
 
-" <---- fzf
+" ========================= fzf =====================================
 " Shift-f to launch fzf
 nnoremap <S-f> :FZF<CR>
-" ----> fzf
+" ===================================================================
+
+
+" ========================= deoplete ================================
+let g:deoplete#enable_at_startup = 1
+" ===================================================================
+
+" ===================== deoplete-clangx =============================
+" Change clang binary path
+call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
+
+" Change clang options
+call deoplete#custom#var('clangx', 'default_c_options', '')
+call deoplete#custom#var('clangx', 'default_cpp_options', '')
+" ===================================================================
