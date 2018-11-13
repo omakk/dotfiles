@@ -116,9 +116,6 @@ set hidden
 " ===================================================================
 
 " ========================= NERDTree ================================
-" Open NERDTree automatically when specifying a directory at launch
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
 " ===================================================================
@@ -127,7 +124,6 @@ map <C-n> :NERDTreeToggle<CR>
 " Shift-f to launch fzf
 nnoremap <S-f> :FZF<CR>
 " ===================================================================
-
 
 " ========================= deoplete ================================
 let g:deoplete#enable_at_startup = 1
