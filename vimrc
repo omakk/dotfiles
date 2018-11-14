@@ -39,7 +39,7 @@ set nowritebackup
 " From jessfraz/vimrc
 " Makes vim handle long lines nicely
 set wrap
-set textwidth=79
+set textwidth=99
 set formatoptions=qrn1
 
 " Tabs as spaces
@@ -71,6 +71,14 @@ let mapleader="`"                   " Set leader to comma
 " Turn off highlight search
 nnoremap <leader><space> :nohlsearch<CR>    
 
+" Switch between light and dark theme
+nnoremap <leader>bgd :set bg=dark<CR>
+nnoremap <leader>bgl :set bg=light<CR>
+
+" Shortcut for splits
+nnoremap <leader>q :split<CR>
+nnoremap <leader>w :vsplit<CR>
+
 " Make Y to act like D and C
 " i.e. yank until EOL
 nmap Y y$
@@ -80,10 +88,6 @@ nnoremap <C-h> <C-W><C-h>
 nnoremap <C-j> <C-W><C-j>
 nnoremap <C-k> <C-W><C-k>
 nnoremap <C-l> <C-W><C-l>
-
-" Switch between light and dark theme
-nnoremap <leader>bgd :set bg=dark<CR>
-nnoremap <leader>bgl :set bg=light<CR>
 
 " Buffer prev/next
 nnoremap <C-x> :bprev<CR>
@@ -127,6 +131,10 @@ nnoremap <S-f> :FZF<CR>
 
 " ========================= deoplete ================================
 let g:deoplete#enable_at_startup = 1
+" Close preview window when finishing a complete
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" Tab completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " ===================================================================
 
 " ===================== deoplete-clangx =============================
