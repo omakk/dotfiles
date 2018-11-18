@@ -10,11 +10,14 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " C/C++ completion for deoplete using clang
 Plug 'Shougo/deoplete-clangx'
 
-Plug 'octol/vim-cpp-enhanced-highlight'
+" vim-cpp-modern
+" Extended vim syntax highlighting for C/C++
+Plug 'bfrg/vim-cpp-modern'
 
 " Color themes
 Plug 'flazz/vim-colorschemes'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'neutaaaaan/iosvkem'
 call plug#end()
 
 set nocompatible
