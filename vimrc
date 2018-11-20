@@ -1,6 +1,11 @@
 call plug#begin()
+
+" NERDTree
+" Tree explorer plugin
 Plug 'scrooloose/nerdtree'
-" Fuzzy finder
+
+" fzf
+" General-purpose fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/dev/git/other/fzf' }
 
 " Deoplete
@@ -14,10 +19,11 @@ Plug 'Shougo/deoplete-clangx'
 " Extended vim syntax highlighting for C/C++
 Plug 'bfrg/vim-cpp-modern'
 
-" Color themes
-Plug 'flazz/vim-colorschemes'
-Plug 'dracula/vim', { 'as': 'dracula' }
+" COLOR THEMES
+" Iosvkem
+" Color theme that mimics colorscheme made to showcase the Iosevka typeface
 Plug 'neutaaaaan/iosvkem'
+
 call plug#end()
 
 set nocompatible
@@ -27,7 +33,7 @@ syntax on                           " syntax processing
 " Use 'true colors' in the terminal
 set termguicolors
 set background=dark
-colorscheme rakkodust               " My own modifcation of blackdust.vim
+colorscheme Iosvkem                 " My own modifcation of blackdust.vim
 
 set wildmenu                        " Visual autocomplete for command menu
 set cursorline                      " Highlight current line
