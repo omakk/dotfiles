@@ -1,12 +1,12 @@
 call plug#begin()
-
 " NERDTree
 " Tree explorer plugin
 Plug 'scrooloose/nerdtree'
 
-" fzf
+" fzf (CLI program and vim plugin)
 " General-purpose fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/dev/git/other/fzf' }
+Plug 'junegunn/fzf.vim'
 
 " Deoplete
 " An extensible and asynchronous completion framework for neovim/Vim8
