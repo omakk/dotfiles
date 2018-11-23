@@ -23,7 +23,6 @@ Plug 'bfrg/vim-cpp-modern'
 " Iosvkem
 " Color theme that mimics colorscheme made to showcase the Iosevka typeface
 Plug 'neutaaaaan/iosvkem'
-
 call plug#end()
 
 set nocompatible
@@ -99,8 +98,8 @@ nnoremap <C-k> <C-W><C-k>
 nnoremap <C-l> <C-W><C-l>
 
 " Buffer prev/next
-nnoremap <C-x> :bprev<CR>
-nnoremap <C-z> :bnext<CR>
+nnoremap <C-z> :bprev<CR>
+nnoremap <C-x> :bnext<CR>
 
 " Place current line at the center, top, and bottom of screen respectively
 nnoremap <space> zz
