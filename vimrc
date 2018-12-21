@@ -126,6 +126,9 @@ vnoremap // y/<C-R>"<CR>
 " ALWAYS use clipboard for ALL operations
 set clipboard+=unnamedplus
 
+" Include newlines in between yanks
+set cpoptions+=>
+
 " Required for operations modifying multiple buffers
 set hidden
 
