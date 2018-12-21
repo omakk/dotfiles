@@ -15,6 +15,14 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " C/C++ completion for deoplete using clang
 Plug 'Shougo/deoplete-clangx'
 
+" rust.vim
+" Provides Rust file detection, syntax highlighting, formatting, Syntastic integration, and more.
+Plug 'rust-lang/rust.vim'
+" vim-racer
+" Usr racer for Rust code completion and navigation
+" Note: This requires racer to be installed (`cargo +nightly install racer`)
+Plug 'racer-rust/vim-racer'
+
 " vim-cpp-modern
 " Extended vim syntax highlighting for C/C++
 Plug 'bfrg/vim-cpp-modern'
@@ -148,8 +156,15 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " ===================== deoplete-clangx =============================
 " Change clang binary path
 call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
+" ========================== rust.vim ==============================
+" Run rustfmt on save
+let g:rustfmt_autosave = 1
+" ===================================================================
 
 " Change clang options
 call deoplete#custom#var('clangx', 'default_c_options', '')
 call deoplete#custom#var('clangx', 'default_cpp_options', '')
+" ========================== vim-racer ==============================
+" Use experimental compeleter to get argument and return type information
+let g:racer_experimental_completer = 1
 " ===================================================================
