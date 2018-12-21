@@ -176,17 +176,11 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " ===================================================================
 
-" ===================== deoplete-clangx =============================
-" Change clang binary path
-call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
 " ========================== rust.vim ==============================
 " Run rustfmt on save
 let g:rustfmt_autosave = 1
 " ===================================================================
 
-" Change clang options
-call deoplete#custom#var('clangx', 'default_c_options', '')
-call deoplete#custom#var('clangx', 'default_cpp_options', '')
 " ========================== vim-racer ==============================
 " Use experimental compeleter to get argument and return type information
 let g:racer_experimental_completer = 1
