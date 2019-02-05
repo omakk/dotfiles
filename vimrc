@@ -1,8 +1,4 @@
 call plug#begin()
-" NERDTree
-" Tree explorer plugin
-Plug 'scrooloose/nerdtree'
-
 " fzf (CLI program and vim plugin)
 " General-purpose fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/dev/git/other/fzf' }
@@ -31,16 +27,14 @@ Plug 'bfrg/vim-cpp-modern'
 " Iosvkem
 " Color theme that mimics colorscheme made to showcase the Iosevka typeface
 Plug 'neutaaaaan/iosvkem'
+" Gruvbox
+" Retro groove color scheme
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 set nocompatible
 filetype indent plugin on           " Load filetype-specific indent lines and plugins
 syntax on                           " syntax processing
-
-" Use 'true colors' in the terminal
-set termguicolors
-set background=dark
-colorscheme Iosvkem                 " My own modifcation of blackdust.vim
 
 set wildmenu                        " Visual autocomplete for command menu
 set cursorline                      " Highlight current line
@@ -88,8 +82,8 @@ let mapleader="`"                   " Set leader to comma
 nnoremap <leader><space> :nohlsearch<CR>    
 
 " Switch between light and dark theme
-nnoremap <leader>bgd :set bg=dark<CR>
-nnoremap <leader>bgl :set bg=light<CR>
+nnoremap <leader>d :set bg=dark<CR>
+nnoremap <leader>l :set bg=light<CR>
 
 " Shortcut for splits
 nnoremap <leader>q :split<CR>
@@ -138,11 +132,6 @@ set hidden
 "                                                                   #
 " ===================================================================
 
-" ========================= NERDTree ================================
-" Toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
-" ===================================================================
-
 " ========================= fzf =====================================
 " Shift-f to launch fzf
 nnoremap <S-f> :FZF<CR>
@@ -184,4 +173,15 @@ let g:rustfmt_autosave = 1
 " ========================== vim-racer ==============================
 " Use experimental compeleter to get argument and return type information
 let g:racer_experimental_completer = 1
+" ===================================================================
+
+" ========================== gruvbox ==============================
+let g:gruvbox_italic = '1'
+let g:gruvbox_italicize_strings = '1'
+let g:gruvbox_imporved_warnings = '1'
+
+" Use 'true colors' in the terminal
+set termguicolors
+set background=dark
+colorscheme gruvbox
 " ===================================================================
