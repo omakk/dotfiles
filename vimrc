@@ -19,10 +19,6 @@ Plug 'rust-lang/rust.vim'
 " Note: This requires racer to be installed (`cargo +nightly install racer`)
 Plug 'racer-rust/vim-racer'
 
-" vim-cpp-modern
-" Extended vim syntax highlighting for C/C++
-Plug 'bfrg/vim-cpp-modern'
-
 " COLOR THEMES
 " Iosvkem
 " Color theme that mimics colorscheme made to showcase the Iosevka typeface
@@ -40,6 +36,8 @@ set wildmenu                        " Visual autocomplete for command menu
 set cursorline                      " Highlight current line
 set autoindent                      " Copy indent from current line when starting new line
 set nowrap                          " Disable visual wrapping
+set mouse=a                         " Allow mouse support in all modes
+set tags=./tags,tags                " Location of tags file
 
 " Dont back up shit
 set noswapfile
