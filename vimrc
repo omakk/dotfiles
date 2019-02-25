@@ -15,7 +15,7 @@ Plug 'Shougo/deoplete-clangx'
 " Provides Rust file detection, syntax highlighting, formatting, Syntastic integration, and more.
 Plug 'rust-lang/rust.vim'
 " vim-racer
-" Usr racer for Rust code completion and navigation
+" Use racer for Rust code completion and navigation
 " Note: This requires racer to be installed (`cargo +nightly install racer`)
 Plug 'racer-rust/vim-racer'
 
@@ -31,6 +31,11 @@ call plug#end()
 set nocompatible
 filetype indent plugin on           " Load filetype-specific indent lines and plugins
 syntax on                           " syntax processing
+
+" Use 'true colors' in the terminal
+set termguicolors
+set background=dark
+colorscheme rakkobox
 
 set wildmenu                        " Visual autocomplete for command menu
 set cursorline                      " Highlight current line
@@ -177,9 +182,4 @@ let g:racer_experimental_completer = 1
 let g:gruvbox_italic = '1'
 let g:gruvbox_italicize_strings = '1'
 let g:gruvbox_imporved_warnings = '1'
-
-" Use 'true colors' in the terminal
-set termguicolors
-set background=dark
-colorscheme gruvbox
 " ===================================================================
