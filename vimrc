@@ -158,6 +158,8 @@ let g:fzf_colors =
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+" Use ripgrep when searching as to respect .gitignore
+let $FZF_DEFAULT_COMMAND = 'rg --files'
 " ===================================================================
 
 " ========================= deoplete ================================
