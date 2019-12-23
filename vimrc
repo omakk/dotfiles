@@ -20,13 +20,18 @@ Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 
 " COLOR THEMES
-" Iosvkem
-" Color theme that mimics colorscheme made to showcase the Iosevka typeface
-Plug 'neutaaaaan/iosvkem'
-" Gruvbox
-" Retro groove color scheme
-Plug 'morhetz/gruvbox'
+" off
+" No-color scheme for vim
+Plug 'pbrisbin/vim-colors-off'
 call plug#end()
+
+if has('gui_running')
+set guioptions-=m                       " Don't load menu bar
+set guioptions-=r                       " Don't load right-scroll bar
+set guioptions-=T                       " Don't load tools bar
+set guioptions-=L                       " Don't load left-scroll bar
+set guioptions+=a                       " Enable autoselect
+endif
 
 set nocompatible
 filetype indent plugin on           " Load filetype-specific indent lines and plugins
@@ -35,7 +40,7 @@ syntax on                           " syntax processing
 " Use 'true colors' in the terminal
 set termguicolors
 set background=dark
-colorscheme rakkobox
+colorscheme off
 
 set wildmenu                        " Visual autocomplete for command menu
 set cursorline                      " Highlight current line
@@ -49,11 +54,12 @@ set noswapfile
 set nobackup
 set nowritebackup
 
-" From jessfraz/vimrc
-" Makes vim handle long lines nicely
+" Handle long lines
 set wrap
+set linebreak
+set nolist
 set textwidth=99
-set formatoptions=qrn1
+set formatoptions=cqrn1
 
 " Tabs as spaces
 set tabstop=4
@@ -64,6 +70,10 @@ set expandtab
 " Allow modelines
 set modeline
 set modelines=1
+
+" Permanent undo
+set undodir=~/.vimdid
+set undofile
 
 set number                          " Show line numbers
 set relativenumber                  " Show line number relative to cursor line
@@ -92,9 +102,11 @@ nnoremap <leader>l :set bg=light<CR>
 nnoremap <leader>q :split<CR>
 nnoremap <leader>w :vsplit<CR>
 
-" Make Y to act like D and C
-" i.e. yank until EOL
-nmap Y y$
+" Shortcut to switch between last two buffers quicker
+nnoremap <leader><leader> <C-^>
+
+" Open list of all open buffers
+nnoremap <S-b> :Buffers<CR>
 
 " Ctrl-[hjkl] to navigate between splits
 nnoremap <C-h> <C-W><C-h>
@@ -102,14 +114,14 @@ nnoremap <C-j> <C-W><C-j>
 nnoremap <C-k> <C-W><C-k>
 nnoremap <C-l> <C-W><C-l>
 
-" Buffer prev/next
-nnoremap <C-z> :bprev<CR>
-nnoremap <C-x> :bnext<CR>
-
 " Place current line at the center, top, and bottom of screen respectively
 nnoremap <space> zz
 nnoremap <space>t zt
 nnoremap <space>b zb
+
+" Make Y to act like D and C
+" i.e. yank until EOL
+nmap Y y$
 
 " Move up and down on splitted lines
 map <Up> gk
@@ -178,10 +190,4 @@ let g:rustfmt_autosave = 1
 " ========================== vim-racer ==============================
 " Use experimental compeleter to get argument and return type information
 let g:racer_experimental_completer = 1
-" ===================================================================
-
-" ========================== gruvbox ==============================
-let g:gruvbox_italic = '1'
-let g:gruvbox_italicize_strings = '1'
-let g:gruvbox_imporved_warnings = '1'
 " ===================================================================
