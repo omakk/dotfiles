@@ -21,8 +21,8 @@ Plug 'racer-rust/vim-racer'
 
 " COLOR THEMES
 " off
-" No-color scheme for vim
-Plug 'pbrisbin/vim-colors-off'
+" No-color scheme for vim with my peronal changes
+Plug 'omakk/vim-colors-off'
 call plug#end()
 
 if has('gui_running')
