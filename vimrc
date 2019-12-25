@@ -1,7 +1,7 @@
 call plug#begin()
 " fzf (CLI program and vim plugin)
 " General-purpose fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/dev/git/other/fzf' }
+Plug 'junegunn/fzf', { 'dir': '~/dev/git/other/fzf' , 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 " Deoplete
