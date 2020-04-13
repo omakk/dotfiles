@@ -78,9 +78,6 @@ set modelines=1
 set undodir=~/.vimdid
 set undofile
 
-set number                          " Show line numbers
-set relativenumber                  " Show line number relative to cursor line
-
 set incsearch                       " Search as characters are entered
 set ignorecase                      " Ignore case when searching
 set smartcase                       " Switch to case-sensitive search when using a capital letter
