@@ -23,6 +23,9 @@ Plug 'racer-rust/vim-racer'
 " off
 " No-color scheme for vim with my peronal changes
 Plug 'omakk/vim-colors-off'
+" Gruvbox
+" Retro groove color scheme for Vim
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 if has('gui_running')
@@ -40,7 +43,7 @@ syntax on                           " syntax processing
 " Use 'true colors' in the terminal
 set termguicolors
 set background=dark
-colorscheme off
+colorscheme gruvbox
 
 set wildmenu                        " Visual autocomplete for command menu
 set cursorline                      " Highlight current line
@@ -143,6 +146,7 @@ set hidden
 
 " Mapping to determine the highlight group under the cursor
 nnoremap <leader>hg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") ."> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " ===================================================================
 "                                                                   #
 "                       Plugin Configuration                        #
@@ -192,4 +196,18 @@ let g:rustfmt_autosave = 1
 " ========================== vim-racer ==============================
 " Use experimental compeleter to get argument and return type information
 let g:racer_experimental_completer = 1
+" ===================================================================
+
+" ========================== gruvbox ==============================
+let g:gruvbox_bold = '0'
+let g:gruvbox_italic = '0'
+let g:gruvbox_underline = '0'
+let g:gruvbox_undercurl = '0'
+
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_contrast_light = 'hard'
+
+let g:gruvbox_improved_warnings = '1'
+
+let g:gruvbox_invert_selection = '0'
 " ===================================================================
