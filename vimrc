@@ -4,13 +4,6 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'dir': '~/dev/git/other/fzf' , 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
-" Deoplete
-" An extensible and asynchronous completion framework for neovim/Vim8
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Deoplete-clangx
-" C/C++ completion for deoplete using clang
-Plug 'Shougo/deoplete-clangx'
-
 " rust.vim
 " Provides Rust file detection, syntax highlighting, formatting, Syntastic integration, and more.
 Plug 'rust-lang/rust.vim'
@@ -175,14 +168,6 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 " Use ripgrep when searching as to respect .gitignore
 let $FZF_DEFAULT_COMMAND = 'rg --files'
-" ===================================================================
-
-" ========================= deoplete ================================
-let g:deoplete#enable_at_startup = 1
-" Close preview window when finishing a complete
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" Tab completion
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " ===================================================================
 
 " ========================== rust.vim ==============================
