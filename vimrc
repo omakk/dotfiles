@@ -82,7 +82,7 @@ set lazyredraw                      " Redraw only when we need to
 set splitbelow                      " Open below when splitting horizontally
 set splitright                      " Open to the right when splitting vertically
 
-let mapleader="`"                   " Set leader to comma
+let mapleader=";"                   " Set leader to semicolon
 
 " Turn off highlight search
 nnoremap <leader><space> :nohlsearch<CR>    
