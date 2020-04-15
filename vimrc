@@ -98,9 +98,6 @@ nnoremap <leader>w :vsplit<CR>
 " Shortcut to switch between last two buffers quicker
 nnoremap <leader><leader> <C-^>
 
-" Open list of all open buffers
-nnoremap <S-b> :Buffers<CR>
-
 " Ctrl-[hjkl] to navigate between splits
 nnoremap <C-h> <C-W><C-h>
 nnoremap <C-j> <C-W><C-j>
@@ -144,8 +141,6 @@ nnoremap <leader>hg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") 
 " ===================================================================
 
 " ========================= fzf =====================================
-" Shift-f to launch fzf
-nnoremap <S-f> :FZF<CR>
 " Customize fzf colors to match colorscheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -161,13 +156,43 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+" Use ripgrep when searching as to respect .gitignore
+let $FZF_DEFAULT_COMMAND = "rg -g '!tags' --files"
+
+" Prefix commands with 'Fzf'
+let g:fzf_command_prefix = 'Fzf'
+
+" Search files
+nnoremap <leader>f :FzfFiles<CR>
+" Open list of all open buffers
+nnoremap <leader>bb :FzfBuffers<CR>
+" Open list of all colorschemes
+nnoremap <leader>c :FzfColors<CR>
+" Open list of tags in the project
+nnoremap <leader>t :FzfTags<CR>
+" Open list of tags in the current buffer
+nnoremap <leader>bt :FzfBTags<CR>
+" Open files found in `git status`
+nnoremap <leader>gs :FzfGFiles?<CR>
+
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-" Use ripgrep when searching as to respect .gitignore
-let $FZF_DEFAULT_COMMAND = 'rg --files'
+
+function! RipgrepFzf(query, fullscreen)
+  " exclude ctags 'tags' file and any 'build/' directory
+  let command_fmt = "rg -g '!tags' -g '!build/' --column --line-number --no-heading --color=always --smart-case %s || true"
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+" :RG <query>
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 " ===================================================================
 
 " ========================== rust.vim ==============================
