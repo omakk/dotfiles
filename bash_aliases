@@ -33,6 +33,7 @@ alias curgitbranch="g symbolic-ref --short HEAD"
 
 # Config Shortcuts
 alias vim="nvim"
+alias gvim="NVIM_GTK_NO_HEADERBAR=1 NVIM_GTK_NO_WINDOW_DECORATION=1 nvim-gtk"
 alias vimrc="vim $DOTS/vimrc"
 alias nvimrc="vimrc"
 alias bashrc="vim ~/.bashrc"

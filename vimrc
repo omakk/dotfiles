@@ -29,6 +29,10 @@ set guioptions-=L                       " Don't load left-scroll bar
 set guioptions+=a                       " Enable autoselect
 endif
 
+if exists('g:GtkGuiLoaded')
+    call rpcnotify(1, 'Gui', 'Font', 'Iosevka Regular 12')
+endif
+
 set nocompatible
 filetype indent plugin on           " Load filetype-specific indent lines and plugins
 syntax on                           " syntax processing
