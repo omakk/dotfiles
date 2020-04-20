@@ -159,21 +159,21 @@ let g:fzf_colors =
 " Use ripgrep when searching as to respect .gitignore
 let $FZF_DEFAULT_COMMAND = "rg -g '!tags' --files"
 
-" Prefix commands with 'Fzf'
-let g:fzf_command_prefix = 'Fzf'
+" Prefix commands with 'FZF'
+let g:fzf_command_prefix = 'FZF'
 
 " Search files
-nnoremap <leader>f :FzfFiles<CR>
+nnoremap <leader>f :FZF<CR>
 " Open list of all open buffers
-nnoremap <leader>b :FzfBuffers<CR>
+nnoremap <leader>b :FZFBuffers<CR>
 " Open list of all colorschemes
-nnoremap <leader>c :FzfColors<CR>
+nnoremap <leader>c :FZFColors<CR>
 " Open list of tags in the project
-nnoremap <leader>t :FzfTags<CR>
+nnoremap <leader>t :FZFTags<CR>
 " Open list of tags in the current buffer
 "nnoremap <leader>bt :FzfBTags<CR>
 " Open files found in `git status`
-nnoremap <leader>gs :FzfGFiles?<CR>
+nnoremap <leader>gs :FZFGFiles?<CR>
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -185,9 +185,7 @@ function! RipgrepFzf(query, fullscreen)
   " exclude ctags 'tags' file and any 'build/' directory
   let command_fmt = "rg -g '!tags' -g '!build/' --column --line-number --no-heading --color=always --smart-case %s || true"
   let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(), a:fullscreen)
 endfunction
 
 " :RG <query>
