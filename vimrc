@@ -86,10 +86,10 @@ set lazyredraw                      " Redraw only when we need to
 set splitbelow                      " Open below when splitting horizontally
 set splitright                      " Open to the right when splitting vertically
 
-let mapleader=";"                   " Set leader to semicolon
+let mapleader=" "                   " Set leader to <space>
 
 " Turn off highlight search
-nnoremap <leader><space> :nohlsearch<CR>    
+nnoremap <leader>` :nohlsearch<CR>
 
 " Switch between light and dark theme
 nnoremap <leader>d :set bg=dark<CR>
@@ -107,11 +107,6 @@ nnoremap <C-h> <C-W><C-h>
 nnoremap <C-j> <C-W><C-j>
 nnoremap <C-k> <C-W><C-k>
 nnoremap <C-l> <C-W><C-l>
-
-" Place current line at the center, top, and bottom of screen respectively
-nnoremap <space> zz
-nnoremap <space>t zt
-nnoremap <space>b zb
 
 " Make Y to act like D and C
 " i.e. yank until EOL
@@ -170,13 +165,13 @@ let g:fzf_command_prefix = 'Fzf'
 " Search files
 nnoremap <leader>f :FzfFiles<CR>
 " Open list of all open buffers
-nnoremap <leader>bb :FzfBuffers<CR>
+nnoremap <leader>b :FzfBuffers<CR>
 " Open list of all colorschemes
 nnoremap <leader>c :FzfColors<CR>
 " Open list of tags in the project
 nnoremap <leader>t :FzfTags<CR>
 " Open list of tags in the current buffer
-nnoremap <leader>bt :FzfBTags<CR>
+"nnoremap <leader>bt :FzfBTags<CR>
 " Open files found in `git status`
 nnoremap <leader>gs :FzfGFiles?<CR>
 
