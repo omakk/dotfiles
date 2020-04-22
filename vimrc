@@ -40,7 +40,6 @@ syntax on                           " syntax processing
 " Use 'true colors' in the terminal
 set termguicolors
 set background=dark
-colorscheme gruvbox
 
 set wildmenu                        " Visual autocomplete for command menu
 set cursorline                      " Highlight current line
@@ -214,4 +213,6 @@ let g:gruvbox_contrast_light = 'hard'
 let g:gruvbox_improved_warnings = '1'
 
 let g:gruvbox_invert_selection = '0'
+
+colorscheme gruvbox
 " ===================================================================
