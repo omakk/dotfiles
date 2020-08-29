@@ -19,6 +19,9 @@ Plug 'omakk/vim-colors-off'
 " Gruvbox
 " Retro groove color scheme for Vim
 Plug 'morhetz/gruvbox'
+" simple-dark
+" A siple dark grayscale theme
+Plug 'tek256/simple-dark'
 call plug#end()
 
 if has('gui_running')
@@ -214,5 +217,6 @@ let g:gruvbox_improved_warnings = '1'
 
 let g:gruvbox_invert_selection = '0'
 
-colorscheme gruvbox
 " ===================================================================
+
+colorscheme simple-dark
