@@ -90,6 +90,10 @@ set splitright                      " Open to the right when splitting verticall
 
 let mapleader=" "                   " Set leader to <space>
 
+" Terminal mode escape
+tnoremap <Esc> <C-\><C-N>
+tnoremap <ESC> <C-\><C-N>
+
 " Turn off highlight search
 nnoremap <leader>` :nohlsearch<CR>
 
