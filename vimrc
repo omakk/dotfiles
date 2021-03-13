@@ -19,9 +19,9 @@ Plug 'omakk/vim-colors-off'
 " Gruvbox
 " Retro groove color scheme for Vim
 Plug 'morhetz/gruvbox'
-" simple-dark
-" A siple dark grayscale theme
-Plug 'tek256/simple-dark'
+" simple-grayscale
+" My version on a light/dark grayscale theme forked from tek256/simple-dark
+Plug 'omakk/simple-grayscale'
 call plug#end()
 
 if has('gui_running')
@@ -30,6 +30,7 @@ set guioptions-=r                       " Don't load right-scroll bar
 set guioptions-=T                       " Don't load tools bar
 set guioptions-=L                       " Don't load left-scroll bar
 set guioptions+=a                       " Enable autoselect
+set guifont=Iosevka\ Term\ 13           " GVim doesnt support ligatures (at least without some patch)
 endif
 
 if exists('g:GtkGuiLoaded')
