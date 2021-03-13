@@ -22,6 +22,8 @@ Plug 'morhetz/gruvbox'
 " simple-grayscale
 " My version on a light/dark grayscale theme forked from tek256/simple-dark
 Plug 'omakk/simple-grayscale'
+" dracula
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 if has('gui_running')
@@ -209,6 +211,12 @@ let g:rustfmt_autosave = 1
 let g:racer_experimental_completer = 1
 " ===================================================================
 
+
+" ===================================================================
+"                                                                   #
+"                   Colorscheme Configuration                       #
+"                                                                   #
+" ===================================================================
 " ========================== gruvbox ==============================
 let g:gruvbox_bold = '0'
 let g:gruvbox_italic = '0'
@@ -221,7 +229,15 @@ let g:gruvbox_contrast_light = 'hard'
 let g:gruvbox_improved_warnings = '1'
 
 let g:gruvbox_invert_selection = '0'
+" ===================================================================
 
+" ========================== dracula ==============================
+let g:dracula_bold = 1
+let g:dracula_italic = 1
+let g:dracula_underline = 0
+let g:dracula_undercurl = 0
+let g:dracula_inverse = 1
+let g:dracula_colorterm = 1
 " ===================================================================
 
 colorscheme simple-dark
