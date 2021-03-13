@@ -38,3 +38,7 @@ alias vimrc="vim $DOTS/vimrc"
 alias nvimrc="vimrc"
 alias bashrc="vim ~/.bashrc"
 alias bashaliases="vim ~/.bash_aliases"
+
+# GPU
+alias nv="__NV_PRIME_RENDER_OFFLOAD=1"
+alias nvgl="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
