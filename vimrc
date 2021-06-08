@@ -11,6 +11,8 @@ Plug 'rust-lang/rust.vim'
 " Use racer for Rust code completion and navigation
 " Note: This requires racer to be installed (`cargo +nightly install racer`)
 Plug 'racer-rust/vim-racer'
+" GLSL syntax highlighting
+Plug 'tikhomirov/vim-glsl'
 
 " COLOR THEMES
 " off
@@ -208,6 +210,10 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 " Run rustfmt on save
 let g:rustfmt_autosave = 1
 " ===================================================================
+
+" ========================== vim-glsl ==============================
+autocmd BufNewFile,BufRead *.vert,*.tesc,*.tese,*.glsl,*.geom,*.frag,*.comp set filetype=glsl
+" ==================================================================
 
 " ========================== vim-racer ==============================
 " Use experimental compeleter to get argument and return type information
