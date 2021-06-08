@@ -24,6 +24,9 @@ Plug 'morhetz/gruvbox'
 Plug 'omakk/simple-grayscale'
 " dracula
 Plug 'dracula/vim', { 'as': 'dracula' }
+" ghdark
+" Vim theme mimicking GitHub's dark mode
+Plug 'wojciechkepka/vim-github-dark'
 call plug#end()
 
 if has('gui_running')
@@ -240,4 +243,6 @@ let g:dracula_inverse = 1
 let g:dracula_colorterm = 1
 " ===================================================================
 
-colorscheme simple-dark
+" Most colorscheme config must take place before setting the actual
+" colorscheme
+colorscheme ghdark
