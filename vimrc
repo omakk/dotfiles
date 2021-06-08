@@ -55,7 +55,7 @@ set cursorline                      " Highlight current line
 set autoindent                      " Copy indent from current line when starting new line
 set nowrap                          " Disable visual wrapping
 set mouse=a                         " Allow mouse support in all modes
-set tags=./tags,tags                " Location of tags file
+set tags=./tags,tags,~/.vim/tags    " Location of tags file
 
 " Dont back up shit
 set noswapfile
@@ -169,7 +169,7 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " Use ripgrep when searching as to respect .gitignore
-let $FZF_DEFAULT_COMMAND = "rg -g '!tags' --files"
+let $FZF_DEFAULT_COMMAND = "rg --files --hidden -g '!tags' -g '!.git'"
 
 " Prefix commands with 'FZF'
 let g:fzf_command_prefix = 'FZF'
