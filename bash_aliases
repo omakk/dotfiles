@@ -1,4 +1,16 @@
-DOTS="~/dev/git/rakko/dotfiles"
+export DEV="/home/rakko/dev"
+export DEV_BUILDS="${DEV}/builds"
+export DEV_GIT="${DEV}/git"
+export DEV_GIT_OTHER="${DEV_GIT}/other"
+export DEV_GIT_RAKKO="${DEV_GIT}/rakko"
+export DOTS="${DEV_GIT_RAKKO}/dotfiles"
+
+# cd shortcuts
+alias dev="cd $DEV"
+alias db="cd $BUILDS"
+alias dg="cd $DEV_GIT"
+alias dgr="cd $DEV_GIT_RAKKO"
+alias dgo="cd $DEV_GIT_OTHER"
 alias dots="cd $DOTS"
 
 # Shell
