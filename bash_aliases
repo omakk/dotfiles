@@ -7,7 +7,7 @@ export DOTS="${DEV_GIT_RAKKO}/dotfiles"
 
 # cd shortcuts
 alias dev="cd $DEV"
-alias db="cd $BUILDS"
+alias db="cd $DEV_BUILDS"
 alias dg="cd $DEV_GIT"
 alias dgr="cd $DEV_GIT_RAKKO"
 alias dgo="cd $DEV_GIT_OTHER"
