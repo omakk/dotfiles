@@ -18,9 +18,6 @@ Plug 'tikhomirov/vim-glsl'
 " off
 " No-color scheme for vim with my peronal changes
 Plug 'omakk/vim-colors-off'
-" Gruvbox
-" Retro groove color scheme for Vim
-Plug 'morhetz/gruvbox'
 " simple-grayscale
 " My version on a light/dark grayscale theme forked from tek256/simple-dark
 Plug 'omakk/simple-grayscale'
@@ -225,19 +222,6 @@ let g:racer_experimental_completer = 1
 "                                                                   #
 "                   Colorscheme Configuration                       #
 "                                                                   #
-" ===================================================================
-" ========================== gruvbox ==============================
-let g:gruvbox_bold = '0'
-let g:gruvbox_italic = '0'
-let g:gruvbox_underline = '0'
-let g:gruvbox_undercurl = '0'
-
-let g:gruvbox_contrast_dark = 'medium'
-let g:gruvbox_contrast_light = 'hard'
-
-let g:gruvbox_improved_warnings = '1'
-
-let g:gruvbox_invert_selection = '0'
 " ===================================================================
 
 " ========================== dracula ==============================
