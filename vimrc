@@ -56,7 +56,6 @@ set cursorline                      " Highlight current line
 set autoindent                      " Copy indent from current line when starting new line
 set nowrap                          " Disable visual wrapping
 set mouse=a                         " Allow mouse support in all modes
-set tags=./tags,tags,~/.vim/tags    " Location of tags file
 
 " Dont back up shit
 set noswapfile
