@@ -3,7 +3,9 @@ call plug#begin()
 " General-purpose fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/dev/git/other/fzf' , 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-
+" nvim-treesitter
+" treesitter configs for nvim
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Update the parsers on update
 " rust.vim
 " Provides Rust file detection, syntax highlighting, formatting, Syntastic integration, and more.
 Plug 'rust-lang/rust.vim'
@@ -148,6 +150,17 @@ nnoremap <leader>hg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") 
 "                                                                   #
 "                       Plugin Configuration                        #
 "                                                                   #
+" ===================================================================
+
+" ========================= nvim-treesitter =========================
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "all",
+  highlight = { enable = true },
+  indent = { enable = true },
+}
+EOF
 " ===================================================================
 
 " ========================= fzf =====================================
