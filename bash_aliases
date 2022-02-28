@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export DEV="/home/rakko/dev"
 export DEV_BUILDS="${DEV}/builds"
 export DEV_GIT="${DEV}/git"
@@ -50,6 +52,7 @@ alias vimrc="vim $DOTS/vimrc"
 alias nvimrc="vimrc"
 alias bashrc="vim ~/.bashrc"
 alias bashaliases="vim ~/.bash_aliases"
+alias kittyconf="vim ~/.config/kitty/kitty.conf"
 
 # GPU
 alias nv="__NV_PRIME_RENDER_OFFLOAD=1"
