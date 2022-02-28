@@ -16,6 +16,10 @@ Plug 'racer-rust/vim-racer'
 " GLSL syntax highlighting
 Plug 'tikhomirov/vim-glsl'
 
+" zig.vim
+" file detection and syntax highlighting for the Zig programming language
+Plug 'ziglang/zig.vim'
+
 " COLOR THEMES
 " off
 " No-color scheme for vim with my peronal changes
