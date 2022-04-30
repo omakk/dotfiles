@@ -15,10 +15,13 @@ alias dgr="cd $DEV_GIT_RAKKO"
 alias dgo="cd $DEV_GIT_OTHER"
 alias dots="cd $DOTS"
 
-# Shell
+# Commands
 alias c=clear
 alias ll="ls -lh"
 alias lla="ls -lha"
+alias vim="nvim"
+alias gvim="NVIM_GTK_NO_HEADERBAR=1 NVIM_GTK_NO_WINDOW_DECORATION=1 nvim-gtk"
+alias ctags="~/.local/bin/ctags"
 
 # Git
 alias g="git"
@@ -46,8 +49,6 @@ alias gs="g status"
 alias curgitbranch="g symbolic-ref --short HEAD"
 
 # Config Shortcuts
-alias vim="nvim"
-alias gvim="NVIM_GTK_NO_HEADERBAR=1 NVIM_GTK_NO_WINDOW_DECORATION=1 nvim-gtk"
 alias vimrc="vim $DOTS/vimrc"
 alias nvimrc="vimrc"
 alias bashrc="vim ~/.bashrc"
