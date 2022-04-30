@@ -1,24 +1,18 @@
 call plug#begin()
-" fzf (CLI program and vim plugin)
-" General-purpose fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/dev/git/other/fzf' , 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
 " nvim-treesitter
 " treesitter configs for nvim
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Update the parsers on update
-" rust.vim
-" Provides Rust file detection, syntax highlighting, formatting, Syntastic integration, and more.
-Plug 'rust-lang/rust.vim'
-" vim-racer
-" Use racer for Rust code completion and navigation
-" Note: This requires racer to be installed (`cargo +nightly install racer`)
-Plug 'racer-rust/vim-racer'
-" GLSL syntax highlighting
-Plug 'tikhomirov/vim-glsl'
-
-" zig.vim
-" file detection and syntax highlighting for the Zig programming language
-Plug 'ziglang/zig.vim'
+" nvim-lspconfig
+" A collection of common config for Neovim's built-in LSP
+Plug 'neovim/nvim-lspconfig'
+" plenary.nvim (required by telescope.nvim)
+Plug 'nvim-lua/plenary.nvim'
+" telescope.nvim
+" Fuzzy finder
+Plug 'nvim-telescope/telescope.nvim'
+" telescope-fzf-native.nvim
+" Native fzf support in telescope
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " COLOR THEMES
 " off
@@ -152,13 +146,50 @@ nnoremap <leader>hg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") 
 " Turn on spell-checker on markdown files
 autocmd FileType markdown setlocal spell
 
+" Detect glsl files
+autocmd BufNewFile,BufRead *.vs,*.fs,*.vert,*.tesc,*.tese,*.glsl,*.geom,*.frag,*.comp set ft=glsl
+
 " ===================================================================
 "                                                                   #
 "                       Plugin Configuration                        #
 "                                                                   #
 " ===================================================================
 
-" ========================= nvim-treesitter =========================
+" ====================== nvim-lspconfig =============================
+lua <<EOF
+local opts = { noremap=true, silent=true }
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ld', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'ccls' }
+for _, lsp in pairs(servers) do
+  require('lspconfig')[lsp].setup {
+    on_attach = on_attach,
+  }
+end
+EOF
+" ===================================================================
+" ===================== nvim-treesitter =============================
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -169,71 +200,23 @@ require'nvim-treesitter.configs'.setup {
 EOF
 " ===================================================================
 
-" ========================= fzf =====================================
-" Customize fzf colors to match colorscheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+" ====================== telescope.nvim =============================
+nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>c <cmd>lua require('telescope.builtin').colorschemes()<cr>
+nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>s <cmd>lua require('telescope.builtin').grep_string()<cr>
+nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>tt <cmd>lua require('telescope.builtin').tags()<cr>
+"nnoremap <leader>tl <cmd>lua require('telescope.builtin').loclist()<cr>
+"nnoremap <leader>tm <cmd>lua require('telescope.builtin').man_pages()<cr>
+"nnoremap <leader>tq <cmd>lua require('telescope.builtin').quickfix()<cr>
+"nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-" Use ripgrep when searching as to respect .gitignore
-let $FZF_DEFAULT_COMMAND = "rg --files --hidden -g '!tags' -g '!.git'"
-
-" Prefix commands with 'FZF'
-let g:fzf_command_prefix = 'FZF'
-
-" Search files
-nnoremap <leader>f :FZF<CR>
-" Open list of all open buffers
-nnoremap <leader>b :FZFBuffers<CR>
-" Open list of all colorschemes
-nnoremap <leader>c :FZFColors<CR>
-" Open list of tags in the project
-nnoremap <leader>t :FZFTags<CR>
-" Open list of tags in the current buffer
-"nnoremap <leader>bt :FzfBTags<CR>
-" Open files found in `git status`
-nnoremap <leader>gs :FZFGFiles?<CR>
-
-" Enable per-command history.
-" CTRL-N and CTRL-P will be automatically bound to next-history and
-" previous-history instead of down and up. If you don't like the change,
-" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
-let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-function! RipgrepFzf(query, fullscreen)
-  " exclude ctags 'tags' file and any 'build/' directory
-  let command_fmt = "rg -g '!tags' -g '!build/' --hidden --column --line-number --no-heading --color=always --smart-case %s || true"
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(), a:fullscreen)
-endfunction
-
-" :RG <query>
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-" ===================================================================
-
-" ========================== rust.vim ==============================
-" Run rustfmt on save
-let g:rustfmt_autosave = 1
-" ===================================================================
-
-" ========================== vim-glsl ==============================
-autocmd BufNewFile,BufRead *.vert,*.tesc,*.tese,*.glsl,*.geom,*.frag,*.comp set filetype=glsl
-" ==================================================================
-
-" ========================== vim-racer ==============================
-" Use experimental compeleter to get argument and return type information
-let g:racer_experimental_completer = 1
+lua <<EOF
+local telescope = require('telescope')
+telescope.setup{}
+telescope.load_extension('fzf')
+EOF
 " ===================================================================
 
 
